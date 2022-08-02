@@ -1,0 +1,23 @@
+[package]
+name = "freecell"
+version = "0.1.0"
+description = "Created with Anchor"
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "freecell"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.24.2"
+duplicate = "0.4.0"
+strum = { version = "0.24", features = ["derive"] }
+strum_macros = "0.24"
+rand = "0.8.5"
