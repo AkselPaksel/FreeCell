@@ -20,4 +20,4 @@ anchor-lang = "0.24.2"
 duplicate = "0.4.0"
 strum = { version = "0.24", features = ["derive"] }
 strum_macros = "0.24"
-rand = "0.8.5"
+# rand = "0.8.5"

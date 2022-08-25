@@ -1,6 +1,8 @@
+use anchor_lang::{prelude::{Rent, Context, Account, Signer, Program}, Accounts, system_program::System};
+
 use crate::state::game::*;
 
-pub fn setup_game(ctx: Context<SetupGame>) -> Result<()> {
+pub fn setup_game(ctx: Context<SetupGame>) -> () {
     ctx.accounts
         .game
         .start();
@@ -8,7 +10,7 @@ pub fn setup_game(ctx: Context<SetupGame>) -> Result<()> {
 
 #[derive(Accounts)]
 pub struct SetupGame<'info> {
-    #[account(init, payer = authority,space = )]
+    #[account(init, payer = authority,space =1 )]
     pub deck: Account<'info, Game>,
     #[account(mut)]
     pub authority: Signer<'info>,

@@ -4,7 +4,7 @@ import { Freecell } from "../target/types/freecell";
 
 describe("freecell", () => {
   // Configure the client to use the local cluster.
-  anchor.setProvider(anchor.Provider.env());
+  anchor.setProvider(anchor.AnchorProvider.env());
 
   const program = anchor.workspace.Freecell as Program<Freecell>;
 
