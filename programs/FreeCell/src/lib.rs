@@ -11,7 +11,7 @@ declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
 #[program]
 mod freecell {
 
-    pub fn setup_games() -> () {
+    pub fn setup_gamesh() -> () {
         instructions::setup_game::setup_game(ctx);
     }
     pub fn _start_game() -> () {
