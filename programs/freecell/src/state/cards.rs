@@ -1,7 +1,7 @@
 
 use strum::IntoEnumIterator;
 use strum_macros::EnumIter;
-use anchor_lang::prelude::{*, borsh::{BorshDeserialize, BorshSerialize}};
+use anchor_lang::{AnchorDeserialize, AnchorSerialize, prelude::{Pubkey, borsh, account, borsh::{BorshDeserialize, BorshSerialize}}};
 
 
  #[allow(dead_code)]
@@ -31,7 +31,7 @@ impl Card {
 #[derive(Debug)]
 #[account]
 pub struct Deck {
-    stack: Vec<Card>,
+    stack: [Option<Card>; 20],
 }
 
 impl Deck{
@@ -47,9 +47,8 @@ impl Deck{
             stack: stackvector
         }
     }
-    pub fn shuffle_cards(mut deck: Deck) -> Vec<Card> {
-        let mut rng = rand::thread_rng();
-        deck.stack.shuffle(&mut rng);
+    pub fn shuffle_cards(mut deck: Deck, random_number: i32) -> [Option<Card>; 20] {
+        deck.stack.shuffle(random_number);
         deck.stack
     }
 }
@@ -58,9 +57,9 @@ impl Deck{
 #[test]
 fn print_stack() {
     let mut deck= Deck::new();
-    // let mut secret_num: Vec<_> = (48..58).collect();
-    let mut rng = rand::thread_rng();
-    deck.stack.shuffle(&mut rng);
+
+    let random_number = 1;
+    deck.stack.shuffle(random_number);
 
     println!("{:?}",  deck) // Has to be run as "cargo test -- --nocapture"
 }

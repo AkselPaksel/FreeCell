@@ -1,13 +1,15 @@
-
+use std::marker::Copy;
 use anchor_lang::prelude::*;
-
 use super::cards::Card;
+use std::vec::Vec;
 
+
+impl Copy for Vec {}
 #[account]
 pub struct Cells {
     freecells: ( [Option<Card>; 4] ),
     targetcells: ( [Option<Card>; 4] ),
-    cardcells: ( [Option<[Option<Card>; 20]>; 8] ),
+    cardcells: ( [Option<Vec<Card>>; 8] ),
 }
 
 impl Cells {
@@ -60,8 +62,9 @@ mod tests {
     use super::*;
     #[test]
     fn deal_cards(){
+        let random_number = 1;
         let deck= Deck::new();
-        let shuffled_deck = Deck::shuffle_cards(deck);
+        let shuffled_deck = Deck::shuffle_cards(deck, random_number);
         let cells = Cells::new(shuffled_deck);
         println!("{:?}", cells);
     }

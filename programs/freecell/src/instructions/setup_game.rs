@@ -1,8 +1,8 @@
-use anchor_lang::{prelude::{Rent, Context, Account, Signer, Program}, Accounts, system_program::System};
+use anchor_lang::{prelude::*, Accounts, system_program::System};
+use crate::state::game::Game;
 
-use crate::state::game::*;
 
-pub fn setup_game(ctx: Context<SetupGame>) -> () {
+pub fn setup_game(ctx: Context<SetupGame>, random_number: f32) -> () {
     ctx.accounts
         .game
         .start();
@@ -11,7 +11,7 @@ pub fn setup_game(ctx: Context<SetupGame>) -> () {
 #[derive(Accounts)]
 pub struct SetupGame<'info> {
     #[account(init, payer = authority,space =1 )]
-    pub deck: Account<'info, Game>,
+    pub game: Account<'info, Game>,
     #[account(mut)]
     pub authority: Signer<'info>,
     pub system_program: Program<'info, System>,

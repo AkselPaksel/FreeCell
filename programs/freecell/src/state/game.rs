@@ -1,9 +1,20 @@
+use anchor_lang::account;
+use super::{cards::Card, cells::Cells};
+use anchor_lang::{AnchorDeserialize, AnchorSerialize, prelude::{Pubkey, borsh, borsh::{BorshDeserialize, BorshSerialize}}};
+
+
 #[account]
 pub struct Game {
     cells: Cells,
     cards: Card,
     state: GameState,
 }
+
+#[derive(Debug, PartialEq, Copy, Clone, BorshSerialize, BorshDeserialize)]
+struct GameState {
+    
+}
+
 
 impl Game {
 
@@ -14,6 +25,8 @@ impl Game {
     }
 
     pub fn start(&mut self){
-        
+
     }
 }
+
+
