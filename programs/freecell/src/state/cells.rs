@@ -3,8 +3,6 @@ use anchor_lang::prelude::*;
 use super::cards::Card;
 use std::vec::Vec;
 
-
-impl Copy for Vec {}
 #[account]
 pub struct Cells {
     freecells: ( [Option<Card>; 4] ),

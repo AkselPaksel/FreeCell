@@ -15,7 +15,6 @@ struct GameState {
     
 }
 
-
 impl Game {
 
     pub const MAXIMUM_SIZE: usize = 1;
